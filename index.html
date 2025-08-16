@@ -694,6 +694,7 @@ CATATA</textarea>
                 PAGE_TYPE: 'BlastSearch',
                 PROGRAM: 'blastn', // 塩基配列なのでblastn
                 //QUERY: sequence,
+                ENTREZ_QUERY: '"Homo sapiens"[Organism]',
                 DATABASE: 'nt', // ntデータベースを対象
                 LINK_LOC: 'blasthome'
             });
@@ -701,7 +702,7 @@ CATATA</textarea>
 
             // 4. リンクをページに表示
             const linkContainer = document.getElementById('blastLinkContainer');
-            linkContainer.innerHTML = `<a href="${blastUrl}" target="_blank">この配列でBLAST検索を実行する</a>`;
+            linkContainer.innerHTML = `<a href="${blastUrl}" target="_blank">BLAST検索のページへ移動</a>`;
         }
     </script>
 
