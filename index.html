@@ -48,65 +48,9 @@
 </head>
 <body>
 
-    <h1>DNA配列情報やオミクスデータの解析方法<br>BLASTを使って何の遺伝子か検索してみましょう！</h1>
-
-    <p>以下のボタンをクリックすると、辛さを感じる遺伝子の配列がクリップボードにコピーされ、BLAST検索へのリンクが表示されます。</p>
-    <button onclick="copyAndGenerateLink()">配列をコピー & NCBI BLASTリンクを表示させる</button>
-    <div id="blastLinkContainer" style="margin-top: 20px;"></div>
-<p>↓辛さを感じる遺伝子のDNA配列の断片配列</p>
-    <textarea id="geneSequence">CACATTGCACATAGAGACTTATATATTTATTTATTTTTCTAGCAGATGAT
-GATAAAGTTCTTAAAAATATACTATGAAAATTTTTTTGATAGTTTTAAAGAAGGGATGCTTTAAAAATAA
-CTTGTCACAAAGTTATTTGAGACTGACTGAGCAGGAGGGTGTATGTCAGGGGACTTGGGATATTGGCTTC
-TATCCAGTGGCACCCCGCCCTCCCTGTGCCCTGTAGCGGTGGTGACGCTGATTGAAGACGGGAAGAATGA
-CTCCCTGCCGTCTGAGTCCACGTCGCACAGGTGGCGGGGGCCTGCCTGCAGGCCCCCCGATAGCTCCTAC
-AACAGCCTGTACTCCACCTGCCTGGAGCTGTTCAAGTTCACCATCGGCATGGGCGACCTGGAGTTCACTG
-AGAACTATGACTTCAAGGCTGTCTTCATCATCCTGCTGCTGGCCTATGTAATTCTCACCTACATCCTCCT
-GCTCAACATGCTCATCGCCCTCATGGGTGAGACTGTCAACAAGATCGCACAGGAGAGCAAGAACATCTGG
-AAGCTGCAGGTGGGTGGGTGGAGTTGGGGGGTGGTGAGTGGCGCGGAGAGTGTGGGCGGCTCTGTCTGCT
-GTCTTACACAGCTGGCTGCAGGTGGGTGGGTGGTGGGGGCGGTGTGTGGCCAGGAGGGTATGGGCCTCTC
-TATCCGCTGCCTTACCCAGCTGGGCACATGAGCCCTGCAGGATTTGAGGAGGGAGCAGAAAGCCCGGCCA
-GGCCCGGGGATCCAGCCTCAGCACCTCCCTCAGTGGACTTCCAGCAAGTTCCCCTGCCCAGCACCTGCTC
-AGGGGCAGATGAGCTCAGCTGGTGTTTATAGACACCGTGCTTGGCTGTGGTCTGGGTGGTCCTGGAGGGA
-AGAAGGGGGAGGGCTCAGCCCGACAGGGTGTCCACCTCAGAGGAGCCTGGTGTAAGGTGGGCACCAGAGG
-CCAGACTCAGGGGAGCAGCTACCATGAGGCAGGGCCCTGACAGCTACA</textarea>
-
-
-    <script>
-        function copyAndGenerateLink() {
-            // 1. 遺伝子配列を取得
-            const sequenceInput = document.getElementById('geneSequence');
-            const sequence = sequenceInput.value;
-
-            // 2. 配列をクリップボードにコピー
-            navigator.clipboard.writeText(sequence).then(function() {
-                alert('配列をクリップボードにコピーしました！');
-            }, function(err) {
-                console.error('コピーに失敗しました: ', err);
-            });
-
-            // 3. BLASTのURLを生成
-            // 塩基配列用のBLAST (blastn) のURLを生成します
-            const blastBaseUrl = 'https://blast.ncbi.nlm.nih.gov/Blast.cgi';
-            const params = new URLSearchParams({
-                CMD: 'Web',
-                PAGE_TYPE: 'BlastSearch',
-                PROGRAM: 'blastn', // 塩基配列なのでblastn
-                //QUERY: sequence,
-                ORGANISM: 9606,
-                DATABASE: 'core_nt', // ntデータベースを対象
-                LINK_LOC: 'blasthome'
-            });
-            const blastUrl = `${blastBaseUrl}?${params.toString()}`;
-
-            // 4. リンクをページに表示
-            const linkContainer = document.getElementById('blastLinkContainer');
-            linkContainer.innerHTML = `
-                <a href="${blastUrl}" target="_blank" title="NCBIでBLAST検索を実行"><p style="margin: 0; font-weight: bold;">NCBIのBLAST検索のリンク↓</p>
-                    <img width="300" alt="US-NLM-NCBI-Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/US-NLM-NCBI-Logo.svg/256px-US-NLM-NCBI-Logo.svg.png?20080121045855">
-                </a>
-            `;
-        }
-    </script>
+    <h1>DNA配列情報やオミクスデータの解析方法</h1>
+    <h2><a href='~/BLAST.html'>1. BLASTを使って何の遺伝子か検索してみましょう！</a></h2>
+    <h2><a href='~/Metascape.html'>1. Metascapeを使ってエンリッチメント解析をしてみましょう！</a></h2>
 
 </body>
 </html>
