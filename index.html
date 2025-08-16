@@ -93,7 +93,7 @@ CCAGACTCAGGGGAGCAGCTACCATGAGGCAGGGCCCTGACAGCTACA</textarea>
                 PROGRAM: 'blastn', // 塩基配列なのでblastn
                 //QUERY: sequence,
                 ORGANISM: 9606,
-                DATABASE: 'nt', // ntデータベースを対象
+                DATABASE: 'core_nt', // ntデータベースを対象
                 LINK_LOC: 'blasthome'
             });
             const blastUrl = `${blastBaseUrl}?${params.toString()}`;
