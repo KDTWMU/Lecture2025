@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF--8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metascape Analysis Helper</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 15px;
+            background-color: #f0f0ff; /* 背景を優しい薄紫色に */
+        }
+        button {
+            display: block;
+            width: 100%;
+            max-width: 800px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #6a5acd; /* ボタンを紫色に */
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:active {
+            background-color: #483d8b;
+        }
+        #metascapeLinkContainer a {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Metascapeエンリッチメント解析ツール</h1>
+    <p>以下のボタンをクリックすると、指定の遺伝子リストがクリップボードにコピーされ、Metascapeサイトへのリンクが表示されます。</p>
+    
+    <button onclick="copyGenesAndShowLink()">遺伝子リストをコピー & Metascapeへ</button>
+
+    <div id="metascapeLinkContainer"></div>
+
+    <script>
+        function copyGenesAndShowLink() {
+            // 1. 解析したい遺伝子のリストを定義
+            const geneList = ["a", "b", "c"];
+
+            // 2. Metascapeの入力形式（改行区切り）の文字列に変換
+            const geneString = geneList.join('\n');
+
+            // 3. 遺伝子リストをクリップボードにコピー
+            navigator.clipboard.writeText(geneString).then(function() {
+                alert('遺伝子リストをコピーしました。\n次に表示されるリンクからMetascapeサイトに進み、リストを貼り付けてください。');
+            }, function(err) {
+                console.error('コピーに失敗しました: ', err);
+                alert('コピーに失敗しました。');
+            });
+
+            // 4. Metascapeサイトへのリンクを表示
+            const linkContainer = document.getElementById('metascapeLinkContainer');
+            const metascapeUrl = 'https://metascape.org/gp/index.html';
+            
+            linkContainer.innerHTML = `
+                <a href="${metascapeUrl}" target="_blank" title="Metascapeサイトを開く">
+                    <img src="https://metascape.org/img/logo-white-background.svg" alt="Metascape Logo" style="height: 50px;">
+                </a>
+            `;
+        }
+    </script>
+
+</body>
+</html>
