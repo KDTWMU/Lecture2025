@@ -31,6 +31,14 @@
             display: inline-block;
             margin-top: 20px;
         }
+        #genelist {
+            width: 100%;
+            max-width: 800px;
+            min-height: 100px;
+            box-sizing: border-box;
+            margin-top: 10px;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
@@ -41,11 +49,14 @@
     <button onclick="copyGenesAndShowLink()">遺伝子リストをコピー & Metascapeへ</button>
 
     <div id="metascapeLinkContainer"></div>
+    <p>↓TRPV1発現細胞を除去した集団で減少した遺伝子のリスト</p>
+    <textarea id="genelist"></textarea>
 
     <script>
         function copyGenesAndShowLink() {
             // 1. 解析したい遺伝子のリストを定義
             const geneList = ["Scn11a","P2rx3","Trpv1","Kcnip4","Grik1","Kcnip2","Scn3b","Trpc3","Kcnh6","Chrna6","Trpa1","Kcnmb1","Trpm8","Kcnc2","Kcnk12","Trpc6","Kcnk13","Kcng2","Gria1","P2rx2","Chrnb3","Kcnf1","Cacna1i","Kcnmb2","Trpc4","Cacng3","Trpv3","Kcns2","Kcnj6","Trpc7","Rgs4","Rgs10","Mrgprd","Gnb4","F2rl2","Gna14","Lpar3","Mrgpra3","Rgs3","Mrgprx1","Rgs8","Ptgdr","Mrgprb5","Gpr35","Npy1r","Npy2r","Agtr1a","Lpar5","Sstr2","Cysltr2","Htr1a","Nmur1","Rgs14","Gpr160","Galr1","Gpr68","Avpr1a","Crhr2","Mrgpra4","Mrgpra9","Calca*","Tac1","Calcb*","Adcyap1","Cartpt","Sst","Gal","Nppb","Ccl1","Scg3","Scg2","Synpr","Mal2","Syt7","Nptx2","Syt9","Syt5","Nptxr","Nrsn1","C1ql4","Syt16","Prdm12","Nbl1","Tshz2","Ldb2","Carhsp1","Fos","Junb","Celf6","Runx1","Egr1","Klf5","Paqr5","Bex1","Zfp36","Myt1","Zmat4","Celf3","Samsn1","Zcchc12","Fosb","Bex4","Btg2","Insm2","Prdm8","Grhl3","Timeless","Insm1","Irf6","Trim14","Zfp575","Bcl11a","Neurog3","Ascl4","Smyd1","Ovol2","Dll3","Hes3","Pax8","Rpp25","Fxyd2","Aqp1","Atp2b4","Slc4a11","Slc45a3","Slc37a1","Slc10a6","Slc17a8","Slc16a12","Slc47a2","Slc7a3","Osta","Bcl2l14","Slc6a7","Slc5a7","Cd24a","Fgf13","Cd55","sgigsf","Gfra2","Ly86","Cd44","Plxnc1","Gfra3","Stac1","Ccdc68","Cgref1","Osmr","Il31ra","Socs3","Lrrc3","Ceacam10","Nxph3","Cdh9","Islr2","Nell1","Plaur","Dkkl1","Tnr","Otoa","Bmp15","Wnt11","Lrrn4","Dcx","Nxph4","Sectm1b","Cxcl1","Bmp8a","Tmem233","Tmem45b","Tubb2b","Rasgrp1","Ctxn3","Ctxn1","Rarres1","Rasgrp","Cpne2","Nrn1l","Tmem158","Rab27b","Arhgap26","Hspa1b","Ms4a3","Plek2","Krt27","Cpne5","Prrt4","Esyt3","Lxn","Prkcd","Acpp","Plcb3","Dusp26","Th","Dgkh","Gpx3","Camk2a","Ppp1r1a","Hs6st2","Prkcq","Mmp25","A3galt2","Dgki","Plcxd3","Dgkg","Ang","Nt5e","Moxd1","Ass1","Pde11a","Ptprt","Cyp4f39","St6galnac5","Cyp2j12","Zdhhc12","Pde4c","Dapk2","Dnase1l3","Car8","Capn9","Ppapdc1a","Wfdc2","Stk32a","Zdhhc23","Tmprss11c","Gm5424","Cpn1","St6gal2","Dgkk","Ada","Rnf182","Mpped1","Fbp2","Gadl1","Hal","Klk5","Serpina11","Serpina1e","Klk8","Itk","Ak4","Samd14","Fam89a","Fam19a4","Bag2","Bves","Scin","Igh","Ighg","Gm525","Fam167a","Card11","Cmtm8","T2","Rspo4","Fgg","Tnfaip8l3","Sh2d4a","Lrrc10b","Ttc29","Gm7325","Nccrp1","Prr15l","Pigr"];
+            document.getElementById(‘genelist’).textContent = geneList;
 
             // 2. Metascapeの入力形式（改行区切り）の文字列に変換
             const geneString = geneList.join('\n');
