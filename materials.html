@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA配列情報やオミクスデータの解析方法</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            border-bottom: 2px solid #4a7c59;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2c5a39;
+            border-bottom: none;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #3e6b4d;
+        }
+        h3 {
+            font-size: 1.3em;
+            border-bottom-style: dotted;
+            color: #4a7c59;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        strong {
+            color: #2c5a39;
+        }
+        .placeholder {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            color: #777;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DNA配列情報やオミクスデータの解析方法</h1>
+
+    <h2>1. オミクス解析の概要</h2>
+    <p>
+        生物が持つ情報を、DNA（<strong>ゲノム</strong>）、RNA（<strong>トランスクリプトーム</strong>）、タンパク質（<strong>プロテオーム</strong>）といった階層ごとに網羅的に取得し、統合的に解析することで生命現象の全体像を理解するアプローチを<strong>オミクス解析</strong>と呼びます。これにより、単一の遺伝子を研究するだけでは得られない、より高次の生命システムの理解を目指します。
+    </p>
+    <div class="placeholder"><img src='図1.png'></img></div>
+
+    <h2>2. ゲノミクス解析のフロー</h2>
+    <p>
+        オミクス解析の出発点となるDNA配列情報を取得し、生物学的な知見を得るまでには、大きく分けて「シーケンシング（読む）」「一次解析（整える）」「二次解析（意味を探る）」という段階があります。
+    </p>
+    <div class="placeholder">[ここに図を挿入： 2. ゲノミクス解析のフロー]</div>
+
+    <h2>3. シーケンス法</h2>
+    <p>
+        <strong>シーケンシング</strong>とは、DNAを構成する塩基（A, T, G, C）の連なりを決定し、生命の設計図をデジタルな文字列データに変換する技術です。この技術は、その特性から主に3つの世代に分類されます。
+    </p>
+    <div class="placeholder">[ここに表を挿入： 3. シークエンス法]</div>
+
+    <h3>サンガーシーケンス</h3>
+    <p>
+        第一世代の技術で、精度が非常に高いのが特徴です。特定の遺伝子の配列を精密に確認する「答え合わせ」の役割を担います。
+    </p>
+    <div class="placeholder">[ここに図を挿入： 4. サンガーシークエンスのイメージ]</div>
+
+    <h3>次世代シーケンス (NGS)</h3>
+    <p>
+        現在主流の技術で、数億ものDNA断片を同時に並列処理できる圧倒的なデータ量を誇ります。現代のオミクス解析における中心的技術です。
+    </p>
+    <div class="placeholder">[ここに図を挿入： 5. 次世代シークエンスのイメージ]</div>
+
+    <h2>4. 一次解析</h2>
+    <p>
+        シーケンサーから出力された膨大な生データ（raw data）を、計算機科学的な手法を用いて整理・整形し、後続の生物学的解析に適した形式に整える段階です。低品質な配列データの除去（クオリティコントロール）などが行われます。
+    </p>
+    <div class="placeholder">[ここに図を挿入： 5. 一次解析のイメージ]</div>
+
+    <h3>マッピング</h3>
+    <p>
+        NGSから出力される個々の短い配列断片（リード）を、その生物種の標準的なゲノム配列である<strong>リファレンスゲノム</strong>（パズルの完成図）上の最適な位置に対応付ける計算処理です。
+    </p>
+    <div class="placeholder">[ここに図を挿入： 6. マッピング]</div>
+
+    <h3>アセンブリ</h3>
+    <p>
+        リファレンスゲノムが存在しない生物種の場合に、リード同士の重なり合う部分を繋ぎ合わせて、ゲノム配列全体をゼロから再構築する処理です。
+    </p>
+    <div class="placeholder">[ここに図を挿入： 7. アセンブリ]</div>
+
+    <h2>5. 二次解析（応用例）</h2>
+    <p>
+        整えられたデータを用いて、当初の生物学的な問いに答える最終段階です。DNAゲノミクスとトランスクリプトミクスでは、それぞれ異なるアプローチで生命の謎に迫ります。
+    </p>
+
+    <h3>DNAゲノミクス解析</h3>
+    <p>
+        ゲノム情報（生命の設計図）そのものを比較・解析し、遺伝的な違いや機能を探ります。
+    </p>
+    <div class="placeholder">[ここに表を挿入： 8. DNAゲノミクス解析の例]</div>
+
+    <h3>トランスクリプトミクス解析</h3>
+    <p>
+        ある特定の状況で活発に働いている遺伝子の情報（生命活動の記録）を解析し、生命現象の動的な側面を捉えます。
+    </p>
+    <div class="placeholder">[ここに表を挿入： 9. トランスクリプトミクス解析の例]</div>
+
+</body>
+</html>
