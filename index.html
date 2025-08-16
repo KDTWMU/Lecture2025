@@ -99,11 +99,10 @@ CCAGACTCAGGGGAGCAGCTACCATGAGGCAGGGCCCTGACAGCTACA</textarea>
             const blastUrl = `${blastBaseUrl}?${params.toString()}`;
 
             // 4. リンクをページに表示
-            const linkContainer.innerHTML = `
-    <a href="${blastUrl}" target="_blank" title="NCBIでBLAST検索を実行">
+            const const linkContainer = document.getElementById('blastLinkContainer');
+            linkContainer.innerHTML = `<a href="${blastUrl}" target="_blank" title="NCBIでBLAST検索を実行">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/NCBI_logo.svg" alt="NCBI BLAST" style="height: 40px;">
-    </a>
-`;
+        </a>`;
         }
     </script>
 
