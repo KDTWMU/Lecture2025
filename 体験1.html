@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Gene Sequence Tool</title>
+</head>
+<body>
+
+    <h1>遺伝子配列ツール</h1>
+
+    <p>以下のボタンをクリックすると、EGFR遺伝子の一部の配列がクリップボードにコピーされ、BLAST検索へのリンクが表示されます。</p>
+
+    <textarea id="geneSequence" style="display:none;">ATGCGACCCTCCGGGACGGCCGGGGGCAGCGCTCCTGGCGCTGCTGGCTGCGCTCTGCCCGGCGAGTCGGGCTCTGGAGGAAAAGAAAGTTT</textarea>
+
+    <button onclick="copyAndGenerateLink()">配列をコピー & BLASTリンク生成</button>
+
+    <div id="blastLinkContainer" style="margin-top: 20px;"></div>
+
+    <script>
+        function copyAndGenerateLink() {
+            // 1. 遺伝子配列を取得
+            const sequenceInput = document.getElementById('geneSequence');
+            const sequence = sequenceInput.value;
+
+            // 2. 配列をクリップボードにコピー
+            navigator.clipboard.writeText(sequence).then(function() {
+                alert('配列をクリップボードにコピーしました！');
+            }, function(err) {
+                console.error('コピーに失敗しました: ', err);
+            });
+
+            // 3. BLASTのURLを生成
+            // 塩基配列用のBLAST (blastn) のURLを生成します
+            const blastBaseUrl = 'https://blast.ncbi.nlm.nih.gov/Blast.cgi';
+            const params = new URLSearchParams({
+                CMD: 'Web',
+                PAGE_TYPE: 'BlastSearch',
+                PROGRAM: 'blastn', // 塩基配列なのでblastn
+                QUERY: sequence,
+                DATABASE: 'nt', // ntデータベースを対象
+                LINK_LOC: 'blasthome'
+            });
+            const blastUrl = `${blastBaseUrl}?${params.toString()}`;
+
+            // 4. リンクをページに表示
+            const linkContainer = document.getElementById('blastLinkContainer');
+            linkContainer.innerHTML = `<a href="${blastUrl}" target="_blank">この配列でBLAST検索を実行する</a>`;
+        }
+    </script>
+
+</body>
+</html>
