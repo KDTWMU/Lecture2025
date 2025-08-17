@@ -87,6 +87,41 @@
             padding-left: 20px;
             margin: 0;
         }
+        /* ポップアップの親要素 */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  cursor: help;
+}
+
+/* ポップアップのテキスト部分（最初は非表示） */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 250px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  
+  /* 位置の指定 */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -125px; /* 横幅の半分を左にずらして中央揃え */
+
+  /* フェードイン効果 */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 親要素にカーソルが乗ったときに、ポップアップを表示 */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
     </style>
 </head>
 <body>
@@ -210,7 +245,11 @@
         <tbody>
             <tr>
                 <td>形質に影響を与える遺伝子を探す</td>
-                <td>変異解析 (<a href='https://www.basepairtech.com/blog/variant-calling-in-genomics/'>Variant call</a> → <a href='https://www.genome.gov/genetics-glossary/Genome-Wide-Association-Studies-GWAS'>GWAS</a>)</td>
+                <td>変異解析 (<span title="個人のゲノムとリファレンスゲノムを比較し、配列の違い（バリアント）を検出するプロセスです。">
+    バリアントコール
+  </span> → <a href='<span title="特定の疾患を持つ集団と持たない集団のゲノム全体を比較し、疾患との関連が統計的に強い遺伝的バリアントを特定する研究手法です。">
+    GWAS（ゲノムワイド関連解析）
+  </span>)</td>
                 <td>原因遺伝子の特定</td>
             </tr>
             <tr>
